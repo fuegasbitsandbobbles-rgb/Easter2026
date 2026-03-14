@@ -24,15 +24,30 @@ body {
 
     /* fallback color if image not available */
     background-color: #fdfaf0;
-    color: #333;
+    color: #000000;
     padding: 8px;
-    text-align: center;
 }
 
 /* Main content wrapper width */
 main {
-    max-width: 1280px;
-    margin: 0 auto;
+    width: 100%;
+}
+
+/* Spacer blocks used throughout the HTML to reduce visual crowding */
+.divider {
+    height: 40px;
+    width: 100%;
+}
+
+#the-bunny{
+    color: white !important;
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 1.2em;
+    color: #000000;
+    text-align: center;
 }
 
 /* Footer shell (social on one side, church info on the other) */
@@ -128,7 +143,7 @@ main {
 
 .top-hero h1,
 .top-hero p {
-    color: #ffffff;
+    color: #000000;
 }
 
 .top-hero iframe {
@@ -136,8 +151,8 @@ main {
 }
 
 header, section, footer {
-    max-width: 1280px;    /* keep content centered on large screens */
-    margin: 0 auto 30px;  /* vertical spacing between major blocks */
+    width: 100%;          /* stretch full page width */
+    margin: 0 0 30px;     /* vertical spacing between major blocks */
     padding: 0 8px;       /* lighter horizontal padding inside containers */
 }
 
@@ -153,6 +168,10 @@ header, section, footer {
 section {
     padding: 30px 20px;  /* uniform spacing for all content sections */
     /* existing content was wrapped in <section> tags earlier */
+}
+
+.intro {
+    text-align: center;
 }
 
 /* Consistent spacing between key page content blocks */
@@ -177,13 +196,26 @@ section {
 }
 
 h1, h2, h3 {
-    color: #5a2a85;
+    color: #206d19;
     margin-bottom: 10px;
+    text-align: center;
+}
+
+#welcome_message {
+    text-align: center;
+}
+
+#welcome_message iframe {
+    display: block;
+    margin: 0 auto;
+    width: min(100%, 980px);
+    aspect-ratio: 16 / 9;
+    height: auto;
 }
 
 #welcome_message p {
     font-size: 1.2em;
-    color: #555;
+    color: #000000;
     margin-top: 15px;
     justify-content: center;
 }
@@ -207,7 +239,7 @@ ul {
 
 #contact-us label {
     font-weight: 600;
-    color: #444;
+    color: #000000;
 }
 
 /* Form input base styles */
@@ -260,7 +292,7 @@ button:hover {
 .form-note {
     min-height: 1.2em;
     font-size: 0.85rem;
-    color: #555;
+    color: #000000;
     margin-top: 4px;
 }
 
@@ -268,14 +300,43 @@ button:hover {
 
 /* Two-column arrangement for "What to Expect" + RSVP */
 .form-columns {
+    background-color: rgb(245, 159, 223);
     display: flex;
     gap: 40px;
     flex-wrap: wrap; /* allow stacking on narrow screens such as phones*/
     margin-top: 30px;
+    padding: 60px 40px;
+    min-height: 400px;
+    /* fade top and bottom edges into the page background image */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
 }
 
 .form-columns > div {
     flex: 1 1 300px; /* each column gets equal share, min width 300px */
+}
+
+/* Service times three-column row */
+.service-times-row {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    background: transparent; /* let page background show through the gaps */
+    padding: 12px 0;
+}
+
+.service-times-row .left,
+.service-times-row .center-column,
+.service-times-row .right {
+    flex: 1;
+    background-color: lavenderblush; /* background only on each column */
+    padding: 14px;
+    border-radius: 6px;
+    height: 160px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Reusable two-column layout utility */
@@ -326,24 +387,25 @@ button:hover {
 }
 
 .parking-image{
-    width: 100%;
+    width: 80%;
+    max-width: 640px;
     height: auto;
+    display: block;
+    margin: 0 auto;
     border: 2px solid #000000;
     border-radius: 4px;
 }
 /* make embedded map larger */
+#map-container {
+    display: flex;
+    justify-content: center;
+}
+
 #map-container iframe {
-    width: 100%;
-    height: 400px; /* increase vertical size */
+    width: 75%;
+    height: 400px;
     border: 0;
 }
-
-.what-to-expect {
-    background-color: rgba(90,42,133,0.05);
-    padding: 20px;
-    border-radius: 4px;
-}
-
 /* Kids slideshow frame */
 .kids-slideshow {
     width: 100%;
@@ -461,7 +523,7 @@ header nav a {
     margin: 0 10px;
     padding: 3px 8px;
     border-radius: 4px;
-    color: #333;            /* dark text instead of default blue */
+    color: #000000;            /* dark text instead of default blue */
     text-decoration: none;  /* remove underline */
     transition: background-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
@@ -498,12 +560,11 @@ header nav a:hover::after {
     position: sticky;
     top: 0;
     z-index: 1000;
-    min-height: 40px;
+    min-height: 80px;
     padding: 0 12px;
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: rgba(0, 0, 0, 0.94);
+    margin: 0 auto 30px;
+    color: white;
 }
 
 .Heading nav {
@@ -512,14 +573,15 @@ header nav a:hover::after {
 }
 
 .header-logo {
-    height: 36px; /* smaller logo to reduce header height */
+    height: 75px; /* smaller logo to reduce header height */
     display: block;
 }
 
 .smaller-text {
-    font-size: 0.9rem !important;
-    color: #666;
+    font-size: 35px;
+    color: #000000;
     margin-top: 5px;
+    text-align: center;
 }
 
 /* mobile polish: keep sections readable and prevent cramped controls */

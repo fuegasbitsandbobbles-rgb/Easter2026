@@ -1,26 +1,29 @@
 // JavaScript for Easter Page 2026
-// This script handles the RSVP form by collecting user input and
-// triggering the default email client via a mailto: link.  It is
-// deliberately simple and runs entirely on the client side.
-
-// Placeholder address for the email.  Update before launch.
-const RSVP_EMAIL = 'John.Pastor@fakeemail.org'; // change this address later
+// This script now submits RSVP data to a backend endpoint.
+// The backend sends both the internal church notification email and
+// the automatic guest follow-up email.
 
 // Helps CSS apply motion styles only when JavaScript is available.
 document.documentElement.classList.add('js');
 
-// build a mailto: URL containing the form data and navigate to it
-// causing the user's mail program to open a new message.
-function sendByEmail(data) {
-    const subject = encodeURIComponent('Easter RSVP');
-    let body = '';
-    body += `Name: ${data.name}\n`;
-    body += `Email: ${data.email}\n`;
-    body += `Adults: ${data.adults}\n`;
-    body += `Children: ${data.children}\n`;
+async function submitRsvpToBackend(data) {
+    const response = await fetch('/api/rsvp', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
 
-    const mailto = `mailto:${RSVP_EMAIL}?subject=${subject}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+    const payload = await response.json().catch(function () {
+        return { ok: false, message: 'Unexpected server response.' };
+    });
+
+    if (!response.ok || !payload.ok) {
+        throw new Error(payload.message || 'Unable to submit RSVP right now.');
+    }
+
+    return payload;
 }
 
 function validateRsvpData(data) {
@@ -42,14 +45,13 @@ function validateRsvpData(data) {
 }
 
 // wait until page is ready, then hook up the form submit handler
-// the handler collects values, logs them, alerts the user, sends email,
-// and finally resets the form fields for another entry.
+// the handler validates and sends RSVP to the backend API.
 document.addEventListener('DOMContentLoaded', function () {
     // RSVP form wiring.
     const form = document.getElementById('rsvp-form');
     const status = document.getElementById('form-status');
     if (form) {
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const data = {
@@ -68,13 +70,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            console.log('Form data submitted:', data);
-            if (status) {
-                status.textContent = 'Opening your email app to send RSVP...';
-                status.style.color = '#2f6f44';
+            const submitButton = form.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
             }
-            sendByEmail(data);
-            form.reset();
+
+            try {
+                await submitRsvpToBackend(data);
+                console.log('RSVP submitted:', data);
+                if (status) {
+                    status.textContent = 'RSVP received. Check your email for confirmation.';
+                    status.style.color = '#2f6f44';
+                }
+                form.reset();
+            } catch (error) {
+                if (status) {
+                    status.textContent = error.message || 'Unable to submit RSVP right now.';
+                    status.style.color = '#b00020';
+                }
+            } finally {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Let us know you're coming!";
+                }
+            }
         });
     }
 
