@@ -3,11 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- SEO notes:
+            1) Update year/date references each season.
+            2) Keep canonical URL equal to the final live URL of this page.
+            3) Keep description around 150-160 characters for search snippets. -->
+    <meta name="description" content="Celebrate Easter 2026 with United Methodist Church of the Good Shepherd in Yukon, OK. View service times, directions, children's ministry details, and RSVP.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://umcgs.org/easter-2026">
+
+        <!-- Facebook share preview notes:
+            - og:url should match canonical.
+            - og:image should be a full URL to a public image (recommended at least 1200x630).
+            - Use Facebook Sharing Debugger to refresh preview cache after edits. -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Celebrate Easter With Us | UMC Good Shepherd">
+    <meta property="og:description" content="Join us for Easter Sunday services, family activities, and worship at United Methodist Church of the Good Shepherd.">
+    <meta property="og:url" content="https://umcgs.org/easter-2026">
+    <meta property="og:image" content="https://umcgs.org/wp-content/uploads/Good-Shepherd-Logo-04.png">
+
+        <!-- Facebook Meta Pixel notes:
+            - Replace YOUR_PIXEL_ID below with the production pixel ID.
+            - Keep this script in <head> to ensure PageView fires quickly.
+            - Add custom events later with: fbq('track', 'EventName'); -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
     <!-- Obviously change what is in the hyperlink later -->
     <link rel="stylesheet" href="Easterpage2026.css">
     <title>Easter Page 2026</title>
 </head>
 <body>
+    <!-- Meta Pixel noscript fallback: update YOUR_PIXEL_ID here too. -->
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+             alt="">
+    </noscript>
     <!-- Sticky site header: logo + quick-jump links -->
     <header class="Heading">
         <a href="https://umcgs.org/" target="_blank" rel="noopener">
@@ -17,6 +57,7 @@
             <a href="#service-times">Service Times</a>
             <a href="#map-container">Map</a>
             <a href="#about-us">About Us</a>
+            <a href="#security">Security</a>
             <!-- <a href="https://umcgs.org/" target="_blank" rel="noopener">Main Website</a> -->
             <!-- note: main website will pop open a new tab so they can check us out and return to complete the form -->
         </nav>
@@ -32,101 +73,95 @@
             <h1 Id="the-bunny">Celebrate Easter With Us</h1>
         </div>
     </section>
-    <!-- Welcome section: embedded YouTube video -->
+    <!-- Welcome section: local/hosted MP4 video -->
     <section id="welcome_message" class="center">
-        <!-- Replace the src below if the sermon video changes -->
-        <iframe width="700" height="394"
-                src="https://www.youtube.com/watch?v=n5uujMb_hbo&list=RDn5uujMb_hbo&start_radio=1"
-                title="Pastor John Easter message"
-                frameborder="0"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-        </iframe>
+        <!-- Replace the src below with your final MP4 file path or hosted MP4 URL -->
+        <video autoplay muted controls playsinline>
+            <source src="Easter_invitation_from_Pastor_John_Miller.-1920x1080-avc1-mp4a.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </section>
     <!-- Intro quote shown over hero image -->
    </div>
-   <div class="divider">
-</div>
- <p class="intro-text">“Hi, I’m Pastor John. Easter is one of the most meaningful Sundays of the year for our church.
-         If you’re looking for a place to celebrate hope and new life, we would love to welcome you…”</p>
+<section id="padding-needed" class="padding-needed">
+ <p class="intro-text">United Methodist Church of the Good Shepherd invites you to join us this Easter (April 5).
+     We'll begin the morning with our annual Sunrise Service. It's held back behind the church on our beautiful
+      "south 40" at the pavilion. It so meaningful to begin Easter as we worship while the sun rises before us. 
+      Bring your favorite lawn/camp chair. In case of inclement weather the service will move into our Christian 
+      Life Center. A simple breakfast is served after this service. After that the celebration continues at our 
+      regular worship times: 8:30 traditional, 9:45 contemporary and 11:00 traditional. Communion will be served
+       at all services. Nursery will be provided at all but the sunrise
+     service and we will have Kids Connect worship at 9:45 and 11:00. We would love to see you this Easter!</p>
          <div class="divider">
 </div>
     <!-- Service time quick-reference -->
     <div class="service_times" id="service-times">
             <h2>Easter Sunday Times</h2>
             <div class="service-times-row">
-                <p class="left">Sunrise Service</p>
+                <p class="left">Sunrise Service 6:30 AM</p>
                 <p class="center-column">Traditional – 8:30 AM & 11:00 AM</p>
                 <p class="right">Contemporary – 9:45 AM</p>
             </div>
     </div>
 <div class="divider">
 </div>
-
+        <h2>Children's Ministry</h2>
         <!-- Kids section: text on the left, slideshow on the right -->
     <div class="columns kids-columns">
-        <div class="kids-info">
-            <h2>Children's Ministry</h2>
-            <p>We offer engaging and age-appropriate activities for children during our Easter services.
-              Our dedicated team ensures a safe and fun environment where kids can learn about the joy of Easter.<br>
-            We have a check in process to ensure the safety of all children,
-            (insert check in process here Tim... I don't got kids)</p>
-
+        <div class="kids-info smaller-text">
+            <p>During Sunday morning worship, we have two available options for your children. Our Nursery 
+                is available for birth to PreK, for all four services. We also offer Kids Connect for preK to 5th grade
+                at the 9:45 AM and 11:00 AM services. Where we practice Musical Worship, and teach a more age appropriate
+                message of the same sermon topic being taught in the main service. We also have 
+            </p>
         </div>
-        <!-- Slideshow uses JS for arrows, dots, and auto-advance timing -->
-        <div class="kids-slideshow" aria-label="Children's ministry photo slideshow">
-            <div class="slideshow-track">
-                <!-- Update these image files whenever ministry photos change -->
-                <img src="childrensministry1.jpg" alt="Kids slideshow placeholder image 1" class="slideshow-image">
-                <img src="childrensministry2.jpg" alt="Kids slideshow placeholder image 2" class="slideshow-image">
-                <img src="childrensministry3.jpg" alt="Kids slideshow placeholder image 3" class="slideshow-image">
-                <!-- Duplicate of first slide enables seamless loop reset -->
-                <img src="childrensministry1.jpg" alt="" class="slideshow-image" aria-hidden="true">
-            </div>
-            <!-- Manual slideshow controls -->
-            <button class="slide-arrow slide-arrow-left" type="button" aria-label="Previous image">&#10094;</button>
-            <button class="slide-arrow slide-arrow-right" type="button" aria-label="Next image">&#10095;</button>
-            <div class="slide-dots" aria-label="Slideshow navigation">
-                <button class="slide-dot active" type="button" data-slide="0" aria-label="Go to image 1"></button>
-                <button class="slide-dot" type="button" data-slide="1" aria-label="Go to image 2"></button>
-                <button class="slide-dot" type="button" data-slide="2" aria-label="Go to image 3"></button>
-            </div>
+        <!-- Static kids image: keeps the slideshow frame/look without controls -->
+        <div class="kids-slideshow" aria-label="Children's ministry photo">
+            <img src="childresnschool-WEB.png" alt="Children's ministry photo" class="kids-static-image">
         </div>
     </div>
+        <p class=" smaller-text"> special activities planned
+                surrounding Easter sunday, such as Palm Sunday during our Kids Connect, Our Easter Egg Hunt on Saturday,
+                from 10:00 AM to 12:00 PM on the back lawn of our church, and our Easter Sunday Service for the children
+                during the Kids Connect, where we will have a special Easter egg hunt that will help tell the story of Jesus.
+                For more information about our Children's Security and check-in prosess, click the button below to take you there.</p>
+        <a href="#security">
+                    <button type="button">Children's Check in</button>
+                </a>
 <div class="divider">
 </div>
 
     <!-- Location section: embedded map + text directions -->
     <div id="location-services">
         <h1>We'd Love to Meet You</h1>
+         <div id="address">
+                <p class="smaller-text" style="font-weight: bold;">10928 SW 15th St, Yukon, OK 73099</p>
+                <p class="smaller-text">We are located on SW 15th Street between Mustang and Sara Roads, directly across the
+                 street from Mustang North Middle and Mustang Creek Elementary Schools.Free parking is available in the church lot, 
+                 we also have a special parking area for first time
+                guests located near the front entrance of both the Traditional and the Contemporary Worship Center.</p>
+            </div>
         <div class="columns">
             <div id="map-container">
                 <!-- If map pin changes, replace this Google Maps embed URL -->
                 <iframe loading="lazy" src="https://maps.google.com/maps?q=10928%20SW%2015th%20St%2C%20Yukon%2C%20OK%2073099&amp;t=m&amp;z=11&amp;output=embed&amp;iwloc=near" title="10928 SW 15th St, Yukon, OK 73099" aria-label="10928 SW 15th St, Yukon, OK 73099"></iframe>
             </div>
-            <div id="address">
-                <p class="center" style="font-weight: bold;">10928 SW 15th St, Yukon, OK 73099</p>
-                <p class="smaller-text">We are located on SW 15th Street between Mustang and Sara Roads, directly across the<br>
-                 street from Mustang North Middle and Mustang Creek Elementary Schools.</p>
-            </div>
+             <div class="parking-map">
+            <img src="UMC-Map-01-1024x822.png" alt="Parking Map" class="parking-image">
         </div>
-    </div>
-
-    <!-- Parking section: instructions + parking lot image -->
-    <div class="columns parking-columns">
-        <div class="parking-instructions">
-            <p class="smaller-text">Free parking is available in the church lot, we also have a special parking area for first time
-                guests located near the front entrance of both the Traditional and the Contemporary Worship Center.
-            </p>
-        </div>
-        <div class="parking-map">
-            <img src="Parkingmap.jpg" alt="Parking Map" class="parking-image">
         </div>
     </div>
     <div class="divider">
 </div>
-
+ <div id="security">
+       <h1>Check-in Process and Security</h1>
+       <p>At the entrance to each classroom, there will be a volunteer or staff member checking in students on a 
+        tablet. The first time a student is registered, there will be additional safety information collected
+        (this process should take around 3 minutes). Every returning visit, our volunteer will search your child’s
+        name, and our system will print out 2 tickets, one is a name tag for your child with any relevant safety
+        information listed on it, as well as a randomized code. This code is also printed on the 2nd ticket and
+        given to whoever drops off the student.Please bring this ticket to pickup to ensure we safely return students to the correct adult. </p>
+    </div>
     <!-- Two-column section: expectations + RSVP form -->
     <div class="form-columns">
         <div class="what-to-expect">
@@ -138,47 +173,46 @@
             </p>
         </div>
         <div id="contact-us">
-            <!-- RSVP form: custom validation/status handled in JS for a friendlier UX. -->
-            <form id="rsvp-form" action="#" method="post" novalidate>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" autocomplete="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" autocomplete="email" required>
-
-                <label for="adults">Number of adults attending:</label>
-                <input type="number" id="adults" name="adults" min="0" required>
-
-                <label for="children">Number of children attending (optional):</label>
-                <input type="number" id="children" name="children" min="0">
-
-                <button type="submit">Let us know you're coming!</button>
-                <p id="form-status" class="form-note" role="status" aria-live="polite"></p>
-            </form>
+            
+            <!-- Embedded Google Form for Easter RSVPs. -->
+            <p class="smaller-text form-placeholder-note">Let us know your coming!</p>
+            <div class="google-form-embed">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSf_UIlDRyRIHgptoGes7dsY-CPY1oPsCeOIVojHJZhda7oURg/viewform?embedded=true"
+                    title="Easter RSVP Google Form"
+                    loading="lazy">
+                    Loading RSVP form...
+                </iframe>
+            </div>
         </div>
     </div>
     <div class="divider">
-</div>
+    </div>
 
     <!-- About Us summary -->
     <div id="about-us">
-        <h2>About Us</h2>
+        <h1>About Us</h1>
         <p>Our church family welcomes all. We gather for worship, fellowship, and to serve our community.
-          More details will be added for Easter 2026.</p>
+          Here at the Church of the Good Shepherd, we strive to create a warm and inviting environment where everyone can grow
+           in their faith and connect with others.  We believe in the power of community and the importance of supporting one 
+           another on our spiritual journeys.We pray this is a place where you can “learn to follow Jesus”. Our caring, accepting,
+            and diverse congregation invites you to come and worship with us.</p>
     </div>
     <div class="divider">
-</div>
-<div class="divider">
-</div>
-
+        </div>
+    </section>
     </main>
 
     <!-- Footer: social links + logo/contact details -->
     <footer class="page-footer">
         <div class="footer-social">
             <!-- Replace # with real profile URLs when available -->
-            <a href="#" class="social-link social-facebook" aria-label="Facebook placeholder link">f</a>
-            <a href="#" class="social-link social-youtube" aria-label="YouTube placeholder link">&#9654;</a>
+            <a href="https://www.facebook.com/umcgs" class="social-link social-facebook" aria-label="Facebook placeholder link">
+                <img src="facebook-icon.png" alt="" class="social-icon">
+            </a>
+            <a href="https://www.youtube.com/@UMCGoodShepherdYukon/videos" target="_blank" rel="noopener" class="social-link social-youtube" aria-label="Visit our YouTube channel">
+                <img src="youtube-icon.png" alt="" class="social-icon">
+            </a>
         </div>
         <div class="footer-content">
             <img src="Good-Shepherd-Logo-04.png" alt="Church Logo" class="footer-logo">

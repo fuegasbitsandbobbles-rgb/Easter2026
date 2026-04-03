@@ -25,7 +25,7 @@ body {
     /* fallback color if image not available */
     background-color: #fdfaf0;
     color: #000000;
-    padding: 8px;
+    padding: 0;
 }
 
 /* Main content wrapper width */
@@ -35,7 +35,7 @@ main {
 
 /* Spacer blocks used throughout the HTML to reduce visual crowding */
 .divider {
-    height: 40px;
+    height: 200px;
     width: 100%;
 }
 
@@ -73,24 +73,28 @@ main {
     margin-left: auto;
 }
 
-/* Circular icon links; replace text glyphs with SVG later if desired */
+/* Social icon links without bubble background */
 .social-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    border: 1px solid rgba(255, 255, 255, 0.45);
-    border-radius: 50%;
-    color: #ffffff;
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 0;
     text-decoration: none;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: transparent;
 }
 
 .social-link:hover {
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.18);
+    background-color: transparent;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: block;
+    object-fit: contain;
 }
 
 /* Footer information group (logo/address/phone) */
@@ -132,7 +136,7 @@ main {
 
 /* top hero area for page title + welcome video/message */
 .top-hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('toppagephoto.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('sunrise.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -170,6 +174,10 @@ section {
     /* existing content was wrapped in <section> tags earlier */
 }
 
+.padding-needed {
+    padding: 0 64px;
+}
+
 .intro {
     text-align: center;
 }
@@ -181,6 +189,10 @@ section {
 #about-us {
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+#about-us {
+    text-align: center;
 }
 
 /* Generic call-to-action button style */
@@ -196,7 +208,7 @@ section {
 }
 
 h1, h2, h3 {
-    color: #206d19;
+    color: #000000;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -205,7 +217,8 @@ h1, h2, h3 {
     text-align: center;
 }
 
-#welcome_message iframe {
+#welcome_message iframe,
+#welcome_message video {
     display: block;
     margin: 0 auto;
     width: min(100%, 980px);
@@ -225,44 +238,31 @@ ul {
     margin-left: 20px;
 }
 
-/* RSVP form area */
-#contact-us form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: transparent;
-    padding: 10px;
-    max-width: 100%;
-    border-radius: 4px;
-    box-shadow: none;
+/* Google Form embed area */
+#contact-us {
+    text-align: center;
 }
 
-#contact-us label {
-    font-weight: 600;
-    color: #000000;
+.form-placeholder-note {
+    max-width: 680px;
+    margin: 0 auto 16px;
 }
 
-/* Form input base styles */
-input[type="text"],
-input[type="email"],
-input[type="number"],
-textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.google-form-embed {
+    width: min(100%, 760px);
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.72);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.google-form-embed iframe {
+    display: block;
     width: 100%;
-    font-size: 1rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-/* Form focus state for accessibility */
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus,
-textarea:focus {
-    border-color: #5a2a85;
-    box-shadow: 0 0 5px rgba(90,42,133,0.3);
-    outline: none;
+    height: 480px;
+    border: 0;
+    background-color: #ffffff;
 }
 
 /* Global button style (arrows/dots are overridden later) */
@@ -283,34 +283,22 @@ button:hover {
     transform: scale(1.02);
     font-weight: bold;
 }
-#rsvp-form {
-    max-width: 360px;
-    margin: 0 auto;
-}
-
-/* Form status message area */
-.form-note {
-    min-height: 1.2em;
-    font-size: 0.85rem;
-    color: #000000;
-    margin-top: 4px;
-}
 
 /* layout helpers removed */
 
 /* Two-column arrangement for "What to Expect" + RSVP */
 .form-columns {
-    background-color: rgb(245, 159, 223);
+    
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
     gap: 40px;
-    flex-wrap: wrap; /* allow stacking on narrow screens such as phones*/
+    flex-wrap: nowrap;
     margin-top: 30px;
     padding: 60px 40px;
     min-height: 400px;
-    /* fade top and bottom edges into the page background image */
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
-}
+    }
 
 .form-columns > div {
     flex: 1 1 300px; /* each column gets equal share, min width 300px */
@@ -319,6 +307,9 @@ button:hover {
 /* Service times three-column row */
 .service-times-row {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
     gap: 20px;
     text-align: center;
     background: transparent; /* let page background show through the gaps */
@@ -333,17 +324,95 @@ button:hover {
     padding: 14px;
     border-radius: 6px;
     height: 160px;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.service-times-row .left::before,
+.service-times-row .center-column::before,
+.service-times-row .right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: -1;
+}
+
+.service-times-row .left::after,
+.service-times-row .center-column::after,
+.service-times-row .right::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.42));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: -1;
+}
+
+.service-times-row .left::before {
+    background-image: url('sunrise-cross.jpeg');
+}
+
+.service-times-row .center-column::before {
+    background-image: url('traditional.png');
+}
+
+.service-times-row .right::before {
+    background-image: url('Contemperary.jpg');
+}
+
+.service-times-row .left:hover,
+.service-times-row .center-column:hover,
+.service-times-row .right:hover,
+.service-times-row .left:active,
+.service-times-row .center-column:active,
+.service-times-row .right:active,
+.service-times-row .left:focus-visible,
+.service-times-row .center-column:focus-visible,
+.service-times-row .right:focus-visible {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.service-times-row .left:hover::before,
+.service-times-row .center-column:hover::before,
+.service-times-row .right:hover::before,
+.service-times-row .left:active::before,
+.service-times-row .center-column:active::before,
+.service-times-row .right:active::before,
+.service-times-row .left:focus-visible::before,
+.service-times-row .center-column:focus-visible::before,
+.service-times-row .right:focus-visible::before,
+.service-times-row .left:hover::after,
+.service-times-row .center-column:hover::after,
+.service-times-row .right:hover::after,
+.service-times-row .left:active::after,
+.service-times-row .center-column:active::after,
+.service-times-row .right:active::after,
+.service-times-row .left:focus-visible::after,
+.service-times-row .center-column:focus-visible::after,
+.service-times-row .right:focus-visible::after {
+    opacity: 1;
 }
 
 /* Reusable two-column layout utility */
 .columns {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
     gap: 20px;
-    flex-wrap: wrap; /* stack on small screens */
+    flex-wrap: nowrap;
     margin-bottom: 20px;
 }
 
@@ -354,6 +423,10 @@ button:hover {
 /* Kids row explicit left/right ordering */
 .kids-columns .kids-info {
     order: 1;
+}
+
+.kids-columns {
+    align-items: flex-start;
 }
 
 .kids-columns .kids-slideshow {
@@ -387,12 +460,11 @@ button:hover {
 }
 
 .parking-image{
-    width: 80%;
-    max-width: 640px;
+    width: 95%;
+    max-width: 900px;
     height: auto;
     display: block;
     margin: 0 auto;
-    border: 2px solid #000000;
     border-radius: 4px;
 }
 /* make embedded map larger */
@@ -403,7 +475,8 @@ button:hover {
 
 #map-container iframe {
     width: 75%;
-    height: 400px;
+    max-width: 1100px;
+    height: 520px;
     border: 0;
 }
 /* Kids slideshow frame */
@@ -432,7 +505,19 @@ button:hover {
     aspect-ratio: 16 / 9;
     display: block;
     object-fit: cover;
+    object-position: center 62%;
     flex: 0 0 25%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 0;
+}
+
+.kids-static-image {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 16 / 9;
+    display: block;
+    object-fit: cover;
+    object-position: center 62%;
     background-color: rgba(255, 255, 255, 0.6);
     border: 0;
 }
@@ -465,11 +550,11 @@ button:hover {
 
 /* Dot navigation at bottom of slideshow */
 .slide-dots {
+    display: none;
     position: absolute;
     bottom: 6px;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
     gap: 8px;
     z-index: 2;
 }
@@ -510,7 +595,8 @@ button:hover {
 /* highlight links and navigational text on hover */
 a:hover,
 header nav a:hover,
-#about-us h2:hover {
+#about-us h1:hover,
+#security h1:hover {
     color: cornflowerblue;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
@@ -523,7 +609,7 @@ header nav a {
     margin: 0 10px;
     padding: 3px 8px;
     border-radius: 4px;
-    color: #000000;            /* dark text instead of default blue */
+    color: #ffffff;
     text-decoration: none;  /* remove underline */
     transition: background-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
@@ -557,14 +643,13 @@ header nav a:hover::after {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: static;
     min-height: 80px;
     padding: 0 12px;
     width: 100%;
     margin: 0 auto 30px;
     color: white;
+    background-color: #000000;
 }
 
 .Heading nav {
@@ -578,10 +663,16 @@ header nav a:hover::after {
 }
 
 .smaller-text {
-    font-size: 35px;
+    font-size: 27px;
     color: #000000;
     margin-top: 5px;
     text-align: center;
+}
+
+.smaller-text + a[href="#security"] {
+    display: block;
+    width: fit-content;
+    margin: 16px auto 0;
 }
 
 /* mobile polish: keep sections readable and prevent cramped controls */
@@ -602,6 +693,7 @@ header nav a:hover::after {
 
     .form-columns,
     .columns {
+        flex-wrap: wrap;
         gap: 16px;
     }
 

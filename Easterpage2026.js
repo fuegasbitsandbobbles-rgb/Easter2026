@@ -1,101 +1,14 @@
 // JavaScript for Easter Page 2026
-// This script now submits RSVP data to a backend endpoint.
-// The backend sends both the internal church notification email and
-// the automatic guest follow-up email.
 
 // Helps CSS apply motion styles only when JavaScript is available.
 document.documentElement.classList.add('js');
 
-async function submitRsvpToBackend(data) {
-    const response = await fetch('/api/rsvp', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-
-    const payload = await response.json().catch(function () {
-        return { ok: false, message: 'Unexpected server response.' };
-    });
-
-    if (!response.ok || !payload.ok) {
-        throw new Error(payload.message || 'Unable to submit RSVP right now.');
-    }
-
-    return payload;
-}
-
-function validateRsvpData(data) {
-    // Basic client-side checks so users get fast feedback before mail app opens.
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!data.name || data.name.trim().length < 2) {
-        return 'Please enter your name (at least 2 characters).';
-    }
-    if (!emailPattern.test(data.email)) {
-        return 'Please enter a valid email address.';
-    }
-    if (!Number.isInteger(data.adults) || data.adults < 0) {
-        return 'Adults must be a whole number of 0 or more.';
-    }
-    if (!Number.isInteger(data.children) || data.children < 0) {
-        return 'Children must be a whole number of 0 or more.';
-    }
-    return '';
-}
-
-// wait until page is ready, then hook up the form submit handler
-// the handler validates and sends RSVP to the backend API.
+// Wait until page is ready, then wire up any interactive UI pieces.
 document.addEventListener('DOMContentLoaded', function () {
-    // RSVP form wiring.
-    const form = document.getElementById('rsvp-form');
-    const status = document.getElementById('form-status');
-    if (form) {
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const data = {
-                name: form.name.value.trim(),
-                email: form.email.value.trim(),
-                adults: Number(form.adults.value),
-                children: form.children.value === '' ? 0 : Number(form.children.value)
-            };
-
-            const errorMessage = validateRsvpData(data);
-            if (errorMessage) {
-                if (status) {
-                    status.textContent = errorMessage;
-                    status.style.color = '#b00020';
-                }
-                return;
-            }
-
-            const submitButton = form.querySelector('button[type="submit"]');
-            if (submitButton) {
-                submitButton.disabled = true;
-                submitButton.textContent = 'Submitting...';
-            }
-
-            try {
-                await submitRsvpToBackend(data);
-                console.log('RSVP submitted:', data);
-                if (status) {
-                    status.textContent = 'RSVP received. Check your email for confirmation.';
-                    status.style.color = '#2f6f44';
-                }
-                form.reset();
-            } catch (error) {
-                if (status) {
-                    status.textContent = error.message || 'Unable to submit RSVP right now.';
-                    status.style.color = '#b00020';
-                }
-            } finally {
-                if (submitButton) {
-                    submitButton.disabled = false;
-                    submitButton.textContent = "Let us know you're coming!";
-                }
-            }
-        });
+    // Set default volume for the welcome video to 75%.
+    const welcomeVideo = document.querySelector('#welcome_message video');
+    if (welcomeVideo) {
+        welcomeVideo.volume = 0.75;
     }
 
     // Scroll-triggered animation for the parking map (runs once).
@@ -123,6 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevBtn = slideshow.querySelector('.slide-arrow-left');
     const nextBtn = slideshow.querySelector('.slide-arrow-right');
     const dots = Array.from(slideshow.querySelectorAll('.slide-dot'));
+    if (!track || dots.length === 0) {
+        return;
+    }
+
     const totalRealSlides = 3; // excludes the duplicated last slide used for seamless looping
     const holdMs = 4500;
     const transitionMs = 800;
